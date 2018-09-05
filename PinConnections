@@ -7,7 +7,14 @@ PIN CONNECTIONS Transmitter:-
 8 to 9V battery
 
 Pin Connections Receiver:-
-VCC 5V
-DATA D11
-GND GND
+VCC - 5V
+DATA - D11(Reciver data pin)
+GND - GND
+Accelerometer sensor connections
+VCC - 3.3 V
+GND  -GND
+X  - A0
+Y  - A1
+Z  - open
+ST  - open
 
