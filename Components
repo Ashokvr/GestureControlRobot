@@ -1,0 +1,16 @@
+Components Reqiured with human INTERFACE
+Transmitter
+1.	Arduino Uno
+2.	ADXL335 accelerometer
+3.	433 MHz RF transmitter
+4.	Breadboard
+5.	9V Battery
+
+Receiver and robot
+1.	Arduino Uno
+2.	433 MHz RF receiver
+3.	L293D motor driver IC
+4.	Chassis and wheels
+5.	2 DC motors
+6.	Breadboard
+7.	9v Battery
