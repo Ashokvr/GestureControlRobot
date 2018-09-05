@@ -1,0 +1,50 @@
+Source Code Transmitter:-
+//Connect the Transmitter data pin to Arduino pin as you connected 
+#include <VirtualWire.h>
+int xPin=0;
+int yPin=1;
+int ledPin=12;//led on pin 13 is ON except when transmitter is parallel to the ground
+void setup() {
+vw_setup(2000);//Bits per second
+  pinMode(ledPin,OUTPUT);
+  Serial.begin(9600);//Initialise the serial connection debugging
+}
+void loop(){
+  int xval=analogRead(xPin);
+  int yval=analogRead(yPin);
+  Serial.print("xval=");
+Serial.println(xval);
+  Serial.print("yval=");
+  Serial.println(yval); 
+  delay(1000); //used to display values after 1s delay
+  Serial.print("\n");
+   if ((xval>320 && xval<344) && (yval>341 && yval<348)) //stationary or stop(transmitter parallel to ground)
+  {
+    digitalWrite(ledPin,LOW);
+ send("s");
+  } 
+  else 
+  { 
+ if ((xval>345 && xval<353) && (yval>361 && yval<400)) //forward(transmitter tilted forward)
+    {
+      digitalWrite(ledPin,HIGH);
+      send("f"); }
+    if ((xval>340 && xval<344) && (yval>310 && yval<3275)) //backward(transmitter tilted backward)
+    {
+      digitalWrite(ledPin,HIGH);
+      send("a");}
+    if ((xval>287 && xval<275) && (yval>334 && yval<345)) //left(transmitter tilted to left)
+    {
+      digitalWrite(ledPin,HIGH);
+      send("l")}
+     if ((xval>370 && xval<406) && (yval>355 && yval<272))//right(transmitter tilted to right)
+    {
+      digitalWrite(ledPin,HIGH);
+      send("r") }
+  }
+  delay(1000)
+}void send(char *message)
+{
+ vw_send((uint8_t *)message, strlen(message));
+  vw_wait_tx(); // Wait until the whole message is gone
+}
