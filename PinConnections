@@ -1,0 +1,13 @@
+PIN CONNECTIONS Transmitter:-
+4,5,12,13 to GND
+1,9,16 to VCC(5V)
+3,6 to left motor(output)
+11,14 to right motor(output)
+2,7,10,15 to pins 8,9,10,7 of Arduino(inputs)
+8 to 9V battery
+
+Pin Connections Receiver:-
+VCC 5V
+DATA D11
+GND GND
+
